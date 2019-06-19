@@ -1,6 +1,8 @@
 <?php
 include("funciones.php");
+$menu = menu(3);
 $resultado = verGuaguas();
+$tres ='active';
 ?>
 
 <!DOCTYPE html>
@@ -17,15 +19,23 @@ $resultado = verGuaguas();
         <h1><img src="images/logo.png" alt="Logo"></h1>
         <h2>Ver Guaguas</h2>
     </header>
+    <nav>
+        <ul>
+            <?= $menu ?>
+        </ul>
+    </nav>
+    <form action="">
+
+    </form>
     <section>
         <?= $resultado ?>
     </section>
     <article id="ver_autobuses">
-            <img src="images/autobuses.png" alt="Guaguas"/>
+            <img src="images/autobus.png" alt="Guaguas"/>
     </article>
         <div class="nuevobus">
             <a href="alta_autobuses.php">
-                <img src="images/nuevobus.png" alt="Dar de alta"/>
+                <img src="images/nuevobus.png" alt="Dar de alta guagua"/>
             </a>
         </div>
 </body>

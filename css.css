@@ -1,9 +1,10 @@
+@charset "UTF-8";
+/* CSS Document */
 
 *{
-    margin: 0;
-    padding: 0;
+	margin:0;
+	padding:0;
 }
-
 
 body{
 	font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -67,6 +68,11 @@ nav ul li a{
 	text-decoration:none;
 }
 
+nav ul li a.active, nav ul li a:hover{
+	background: rgba(180,245,79,1.00);
+	color: rgba(65,65,65,1.00);
+}
+
 section{
 	width:50%;
 	max-width:450px;
@@ -75,6 +81,18 @@ section{
 	padding:1em;
 	box-sizing:border-box;
 }
+
+/* ALTA AUTOBUSES */
+article#autobus{
+	position:absolute;
+	width:350px;
+	bottom:20px;
+}
+
+article#autobus img{
+	width:100%;
+}
+
 
 /* VER AUTOBUSES */
 
@@ -128,6 +146,10 @@ article#ver_autobuses img{
 	float:right;
 	margin-right:20px;
 }
+
+
+
+
 
 
 
