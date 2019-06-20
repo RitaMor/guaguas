@@ -2,7 +2,11 @@
 
 include("bbdd/BaseDeDatos.php");
 include("bbdd/DbMySql.php");
+include("clases/Guagua.php");
 
+if(isset($_POST['alta'])){
+    altaGuagua();
+}
 
 function conexionBD($consulta){
     $dbLocal = new DbMySql('localhost','guaguas','rita1234','guaguas',3306);
@@ -16,27 +20,38 @@ function menu($numero){
 
         switch($numero){
             case 1:
-            $class1='active';
-            break;
+                $class1='active';
+                break;
             case 2:
-            $class2='active';
-            break;
+                $class2='active';
+             break;
             case 3:
-            $class3='active';
-            break;
+                $class3='active';
+                break;
             case 4:
-            $class4='active';
-            break;
+             $class4='active';
+                break;
             case 5:
-            $class5='active';
-            break;
+                $class5='active';
+                break;
         }
-    $menu = '<li><a href="index.php" class="<?=$uno?>">Inicio</a></li>
-            <li><a href="alta_guaguas.php" class="<?=$dos?>">Alta Guaguas</a></li>
-            <li><a href="ver_guaguas.php" class="<?=$tres?>">Ver Guaguas</a></li>
-            <li><a href="alta_conductores.php" class="<?=$cuatro?>">Alta Conductores</a></li>
-            <li><a href="ver_conductores.php" class="<?=$cinco?>">Ver Conductores</a></li>';
+    $menu = '<li><a href="index.php" class="'.$class1.'">Inicio</a></li>
+            <li><a href="alta_guagua.php" class="'.$class2.'">Alta Guaguas</a></li>
+            <li><a href="ver_guaguas.php" class="'.$class3.'">Ver Guaguas</a></li>
+            <li><a href="alta_conductores.php" class="'.$class4.'">Alta Conductores</a></li>
+            <li><a href="ver_conductores.php" class="'.$class5.'">Ver Conductores</a></li>';
             return $menu;
+        }
+
+
+function altaGuagua(){
+          $nombre = $_POST['nombre'];
+          $color = $_POST['color']; 
+          $capacidad = $_POST['capacidad'];
+          $guagua = new Guagua($nombre,$color,$capacidad);
+          
+          conexionBD($guagua->darDeAlta());
+          header ('Location:ver_guaguas.php');
         }
 
 function verGuaguas(){
@@ -48,7 +63,7 @@ function verGuaguas(){
     while($row = mysqli_fetch_assoc($valor)){
         $resultado .= '<h3>Nombre: 
                             <span>'.$row['nombre'].'</span>
-                            <a href=editar_autobuses.php" class="editar">
+                            <a href="editar_guaguas.php?id='.$row['ID'] .'"class="editar">
                                 <img src="images/editar.png">
                             </a>
                         </h3>';

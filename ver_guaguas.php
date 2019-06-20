@@ -2,7 +2,7 @@
 include("funciones.php");
 $menu = menu(3);
 $resultado = verGuaguas();
-$tres ='active';
+
 ?>
 
 <!DOCTYPE html>
@@ -24,9 +24,6 @@ $tres ='active';
             <?= $menu ?>
         </ul>
     </nav>
-    <form action="">
-
-    </form>
     <section>
         <?= $resultado ?>
     </section>
@@ -34,7 +31,7 @@ $tres ='active';
             <img src="images/autobus.png" alt="Guaguas"/>
     </article>
         <div class="nuevobus">
-            <a href="alta_autobuses.php">
+            <a href="alta_guagua.php">
                 <img src="images/nuevobus.png" alt="Dar de alta guagua"/>
             </a>
         </div>
