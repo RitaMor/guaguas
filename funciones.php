@@ -8,6 +8,15 @@ if(isset($_POST['alta'])){
     altaGuagua();
 }
 
+if(isset($_POST['editar'])){
+    editarGuagua();
+}
+
+if(isset($_GET['borrar'])){
+    borrarGuagua($_GET['borrar']);
+}
+
+
 function conexionBD($consulta){
     $dbLocal = new DbMySql('localhost','guaguas','rita1234','guaguas',3306);
     $valor = $dbLocal->setQuery($consulta);
@@ -63,7 +72,7 @@ function verGuaguas(){
     while($row = mysqli_fetch_assoc($valor)){
         $resultado .= '<h3>Nombre: 
                             <span>'.$row['nombre'].'</span>
-                            <a href="editar_guaguas.php?id='.$row['ID'] .'"class="editar">
+                            <a href="editar_guagua.php?id='.$row['ID'] .'"class="editar">
                                 <img src="images/editar.png">
                             </a>
                         </h3>';
@@ -74,6 +83,41 @@ function verGuaguas(){
     }
     //$resultado = 'hola';
     return $resultado;
+}
+
+
+function cargarGuaguaEditar($id){
+
+    $consulta = "SELECT * FROM guagua WHERE ID='$id'";
+    $valor = conexionBD($consulta);
+    // while($row = mysqli_fetch_assoc($valor)){
+    //     $nombre = $row['nombre'];
+    //     $color = $row['color'];
+    //     $capacidad = $row['capacidad'];
+    // }
+    // $resultado = Array($nombre,$color,$capacidad);
+    // return $resultado;
+    return mysqli_fetch_assoc($valor);
+    
+}
+
+function editarGuagua(){
+    $id = htmlentities($_POST['ID']);
+    $nombre = htmlentities($_POST['nombre']);
+    $color = htmlentities($_POST['color']); 
+    $capacidad = htmlentities($_POST['capacidad']);
+    $consulta = "UPDATE guagua set Nombre='$nombre', Color='$color', Capacidad='$capacidad'
+                WHERE ID='$id'";
+
+    conexionBD($consulta);
+    header ('Location:ver_guaguas.php?id='.$id);
+
+}
+
+function borrarGuagua($id){
+    $consulta ="DELETE FROM guagua WHERE ID='$id'";
+    conexionBD($consulta);
+    header('Location:ver_guaguas.php');
 }
 
 ?>

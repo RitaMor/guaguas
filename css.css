@@ -82,7 +82,6 @@ section, form{
 	box-sizing:border-box;
 }
 
-
 form label, form input{
 	width:100%;
 	font-size:1em;
@@ -104,12 +103,17 @@ form input[type=submit]{
 	height:40px;
 	font-size:1em;
 	border:none;
-	
 	background:#585858;
 	color:#fff;
 	float:right;
 	text-align:center;
+	cursor:pointer;
 }
+
+/* input.boton_editar{
+	float:left !important;
+	margin-left:180px;
+} */
 
 .clearfix{
 	clear:both;
@@ -136,9 +140,10 @@ article#autobus img{
 		right:-400px;
 	}
 	100%{
-		right:72%;
+		right:70%;
 	}
 } */
+
 
 /* VER AUTOBUSES */
 
@@ -193,19 +198,19 @@ article#ver_autobuses img{
 	margin-right:20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.borrar{
+	width:25%;
+	height:40px;
+	font-size:1em;
+	border:none;
+	background:rgba(219,81,29,1.00);
+	color:#fff;
+	margin-left:1%;
+	margin-right: 2%;
+	display:block;
+	text-decoration:none;
+	text-align:center;
+	line-height:40px;
+	float:right;
+	margin-top:10px;
+}
